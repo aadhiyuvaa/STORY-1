@@ -2,27 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Sky & The Moon</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
       font-family: 'Playfair Display', serif;
       background: radial-gradient(ellipse at top, #0a0a23 0%, #1c1c3c 100%);
       color: #f0f0f0;
-      overflow: hidden;
-      height: 100%;
-    }
-
-    body {
       display: flex;
       align-items: center;
       justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
     }
 
-     .moon {
+    .moon {
       position: absolute;
       top: 50px;
       right: 70px;
@@ -86,6 +83,7 @@
       0% {
         transform: translate(0, 0) rotate(45deg);
         opacity: 1;
+        box-shadow: 0 0 10px 4px white;
       }
       100% {
         transform: translate(-400px, 400px) rotate(45deg);
@@ -94,17 +92,12 @@
       }
     }
 
-    .slider-wrapper {
-      overflow: hidden;
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-    }
-
     .slider {
       display: flex;
       width: 300vw;
       height: 100vh;
+      position: relative;
+      z-index: 2;
       transition: transform 1s ease-in-out;
     }
 
@@ -123,7 +116,6 @@
       background: rgba(255, 255, 255, 0.05);
       border-radius: 1rem;
       box-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
-      z-index: 2;
     }
 
     h1 {
@@ -224,14 +216,13 @@
   <div class="stars"></div>
   <div class="moon"></div>
 
-  <div class="slider-wrapper">
-    <div class="slider" id="slider">
-      <!-- Slide 1 -->
-      <div class="slide">
-        <div class="container">
-          <h1>🌠 The Weight of the Truth</h1>
-          <div class="scrollable-text">
-            <p>The sky never forgot her.
+  <div class="slider" id="slider">
+    <!-- Slide 1 -->
+    <div class="slide">
+      <div class="container">
+        <h1>🌠 The Weight of the Truth</h1>
+        <div class="scrollable-text">
+          <p>The sky never forgot her.
 Even when she was gone,
 she was the only moon
 he had ever known.
@@ -277,16 +268,16 @@ Stars fell with weight
 But the regret…
 it hurt more than the fall.
 <span class="highlight">Sometimes the pain was easier to carry than the truth.</span></p>
-          </div>
         </div>
       </div>
+    </div>
 
-      <!-- Slide 2 -->
-      <div class="slide">
-        <div class="container">
-          <h1>🌩 Fix or Feel: The Mask of the Sky</h1>
-          <div class="scrollable-text">
-            <p>He wanted to stay.
+    <!-- Slide 2 -->
+    <div class="slide">
+      <div class="container">
+        <h1>🌩 Fix or Feel: The Mask of the Sky</h1>
+        <div class="scrollable-text">
+          <p>He wanted to stay.
 Even knowing
 he was the one
 who created the storm
@@ -328,17 +319,17 @@ Let it burn.
 Let it tear through him,
 like the storm he left in her.
 <span class="highlight">Because If he couldn’t fix it, he would face it.</span></p>
-          </div>
         </div>
       </div>
+    </div>
 
-      <!-- Slide 3 -->
-      <div class="slide">
-        <div class="container">
-          <h1>...</h1>
-          <div class="scrollable-text">
-            <p><span class="highlight"></span></p>
-          </div>
+    <!-- Slide 3 -->
+    <div class="slide">
+      <div class="container">
+        <h1>...</h1>
+        <div class="scrollable-text">
+          <p>
+<span class="highlight"></span></p>
         </div>
       </div>
     </div>
@@ -426,7 +417,10 @@ like the storm he left in her.
       }
     }
 
-    updateSlider(); // Init
+    // Ensure proper rendering after content load
+    window.addEventListener('load', () => {
+      setTimeout(updateSlider, 100);
+    });
   </script>
 </body>
 </html>
